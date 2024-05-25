@@ -30,7 +30,7 @@ The process will result in a structure resembling the following:
 
 In this phase, we identify the pipe **`|`** and the redirections [**`<`**, **`>`**, **`>>`**, **`<<`**].
 
-1. If we encounter one of [**`<`**, **`>`**, **`>>`**], it signifies that the subsequent node will be a **file**. 
+1. If we encounter one of [**`<`**, **`>`**, **`>>`**], it signifies that the subsequent node will be a **file**.
 2. If we encounter **`<<`**, it indicates that the next node is a **delimiter** for the **heredoc**.
 3. If we encounter **`|`**, it signifies that the next set of nodes, up to the next **`|`** or the end of the list, forms a separate command.
 
