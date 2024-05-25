@@ -65,7 +65,7 @@ void	take_and_do_cmd(t_minishell *mini)
 
 void	mini_shell(t_minishell *mini)
 {
-	mini->prompt = inisialise_prompt();
+	mini->prompt = inisialise_prompt_2();
 	mini->line = readline(mini->prompt);
 	if (!mini->line)
 		out(mini);
