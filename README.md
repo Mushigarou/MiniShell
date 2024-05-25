@@ -6,6 +6,7 @@
 2. [Parsing](#parsing)
     1. [Splitting](#splitting)
     2. [Identifying](#identifying)
+3. [Author & Final mark](#author--final-mark)
 
 ## Introduction
 
@@ -50,3 +51,9 @@ Finally, we identify the flags and arguments.
 > **Note:** If a **flag** is found after an **argument**, it constitutes an error.
 
 ---
+
+## Author & Final mark
+
+This project was developed and validated by [`0xJ4GU4R`](https://github.com/jaguar-ks) and [`LeakedByteBuster`](https://github.com/LeakedByteBuster). With a final mark of:
+
+![final_mark](./mark.png)
