@@ -3,14 +3,49 @@
 ## Navigation
 
 1. [Introduction](#introduction)
-2. [Parsing](#parsing)
+1. [Instalation and Usage](#instalation-and-usage)
+    1. [Instalation](#instalation)
+    1. [Usage](#usage)
+1. [Parsing](#parsing)
     1. [Splitting](#splitting)
-    2. [Identifying](#identifying)
-3. [Author & Final mark](#author--final-mark)
+    1. [Identifying](#identifying)
+1. [Author & Final mark](#author--final-mark)
 
 ## Introduction
 
 The objective of this project is to implement a simple shell in **`C`**. This shell will handle various signals, special characters, and environment variables.
+
+## Instalation and Usage
+
+### Instalation
+
+To install this project clone this project by running
+
+```bash
+    git clone 'git@github.com:jaguar-ks/MINI_SHELL.git'
+```
+
+cd to the project directory
+
+```bash
+    cd MINI_SHELL
+```
+
+make sure u have the ***`readline`*** library installed if you are on ***`macOS`*** you can run the following command to install it
+
+```bash
+    brew install readline
+```
+
+that assuming you already have brew if not you can know how to set it up [here](https://github.com/kube/42homebrew)
+
+### Usage
+
+After installing all depandencies you can run the following command on the root of the project:
+
+```bash
+    make && ./minishell
+```
 
 ## Parsing
 
