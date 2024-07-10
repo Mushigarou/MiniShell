@@ -9,16 +9,16 @@
 1. [Parsing](#parsing)
     1. [Splitting](#splitting)
     1. [Identifying](#identifying)
-2. [Execution](#overview)
-- [Command Execution](#command-execution)
-- [Child Process Management](#child-process-management)
-- [Initialization](#initialization)
-- [Child Execution](#child-execution)
-- [Pipeline Execution](#pipeline-execution)
-- [Redirection Handling](#redirection-handling)
-- [Path Resolution](#path-resolution)
-- [Pipe Handling](#pipe-handling)
-- [File Descriptor Management](#file-descriptor-management)
+1. [Execution](#overview)
+    1. [Command Execution](#command-execution)
+    1. [Child Process Management](#child-process-management)
+    1. [Initialization](#initialization)
+    1. [Child Execution](#child-execution)
+    1. [Pipeline Execution](#pipeline-execution)
+    1. [Redirection Handling](#redirection-handling)
+    1. [Path Resolution](#path-resolution)
+    1. [Pipe Handling](#pipe-handling)
+    1. [File Descriptor Management](#file-descriptor-management)
 1. [Author & Final mark](#author--final-mark)
 
 ## Introduction
@@ -103,39 +103,49 @@ The execution part of the minishell project handles the running of parsed comman
 
 ## Components
 
-### [Command Execution](#command-execution)
+### Command Execution
 
 - **_execute_command**: Executes a single command.
   - Checks if the command is a built-in, and if so, executes it.
   - If not, finds the command's path and uses `execve` to run it.
   - Handles errors if the command is not found.
 
-### [Child Process Management](#child-process-management)
+---
+
+### Child Process Management
 
 - **wait_childs**: Waits for all child processes to finish execution.
   - Checks for segmentation faults and handles them accordingly.
   - Waits for all child processes and returns the last exit status.
 
-### [Initialization](#initialization)
+---
+
+### Initialization
 
 - **init_var**: Initializes file descriptor variables for standard input and output.
   - Sets default values for input and output file descriptors and resets error flags.
 
-### [Child Execution](#child-execution)
+---
+
+### Child Execution
 
 - **_execute_in_child**: Prepares and executes a command in a child process.
   - Sets up redirections using `dup2`.
   - Closes unnecessary file descriptors.
   - Executes the command.
 
-### [Pipeline Execution](#pipeline-execution)
+---
+
+### Pipeline Execution
 
 - **execute_pipeline**: Manages the execution of a series of commands connected by pipes.
   - Initializes variables and opens necessary pipes and redirections.
   - Executes each command in the pipeline.
   - Waits for all child processes to finish.
 
-### [Redirection Handling](#redirection-handling)
+---
+
+### Redirection Handling
 
 - **_handle_redirections**: Opens files for input and output redirections.
   - Handles different types of redirections (`<`, `>`, `>>`) and stores the file descriptors.
@@ -144,7 +154,9 @@ The execution part of the minishell project handles the running of parsed comman
 - **open_redirections**: Processes all redirections for a command pipeline.
   - Iterates through redirection tokens and applies them using `_handle_redirections`.
 
-### [Path Resolution](#path-resolution)
+---
+
+### Path Resolution
 
 - **find_cmd**: Searches for the executable of a given command in the provided paths.
   - Checks for direct paths or searches within system paths.
@@ -153,35 +165,40 @@ The execution part of the minishell project handles the running of parsed comman
 - **get_cmd_path**: Retrieves the system `PATH` environment variable and uses it to find the command's executable.
   - Splits the `PATH` and uses `find_cmd` to locate the executable.
 
-### [Pipe Handling](#pipe-handling)
+---
+
+### Pipe Handling
 
 - **open_pipes**: Sets up pipes between commands in a pipeline.
   - Creates pipes and assigns the input and output file descriptors accordingly.
   - Ensures proper connection of command outputs to subsequent command inputs.
 
-### [File Descriptor Management](#file-descriptor-management)
+---
+
+### File Descriptor Management
 
 - **close_file_descriptors**: Closes all open file descriptors except standard input, output, and error.
   - Ensures cleanup of file descriptors after command execution.
 
-### [Execution of All Commands](#execution-of-all-commands)
+---
+
+### Execution of All Commands
 
 - **execute_all_commands**: Executes all commands in a given pipeline.
   - Forks processes for each command.
   - Executes commands in child processes and handles errors.
   - Waits for the last child process and updates the exit status.
 
+---
+
 ## Execution Flow
 
 1. **Initialization**:
    - Initialize file descriptors and error flags.
-   
 2. **Redirection and Pipe Setup**:
    - Open necessary redirections and pipes for the command pipeline.
-   
 3. **Command Execution**:
    - Execute each command in the pipeline, managing child processes and handling errors.
-   
 4. **Cleanup**:
    - Close all file descriptors and wait for child processes to complete.
 
