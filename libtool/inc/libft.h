@@ -41,6 +41,7 @@
 # define RED "\001\e[31;1m\002"
 # define YELLOW "\001\e[33;1;3m\002"
 # define GREEN "\001\e[32;3;1m\002"
+# define BLUE "\001\e[34;3;1m\002"
 
 typedef struct s_list
 {

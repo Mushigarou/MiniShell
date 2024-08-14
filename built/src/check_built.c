@@ -17,7 +17,7 @@ int	check_builtin(char *cmd)
 	if (!cmd)
 		return (0);
 	if (is_cd(cmd) || is_echo(cmd) || is_env(cmd) || is_exit(cmd)
-		|| is_unset(cmd) || is_export(cmd) || is_pwd(cmd))
+		|| is_unset(cmd) || is_export(cmd) || is_pwd(cmd) || !ft_strcmp(cmd, "who_are_we"))
 		return (1);
 	else
 		return (0);
@@ -39,6 +39,8 @@ void	do_builtin(t_exec *cmd, t_minishell *mini)
 		my_unset(cmd, mini);
 	else if (is_export(cmd->cmd_exec[0]))
 		my_export(cmd, mini);
+	else if(!ft_strcmp(cmd->cmd_exec[0], "who_are_we"))
+		who_are_we();
 }
 
 int	should_not_fork(char **cmd)
