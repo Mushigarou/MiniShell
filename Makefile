@@ -55,6 +55,7 @@ BLTIN :=	built/src/check_built.c\
 			built/src/my_export.c\
 			built/src/my_pwd.c\
 			built/src/my_unset.c\
+			built/src/who_are_we.c\
 
 SRC := $(MAIN) $(PARSE) $(EXEC) $(BLTIN)
 

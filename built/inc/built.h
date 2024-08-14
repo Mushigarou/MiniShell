@@ -90,5 +90,7 @@ void	bring_back_env_prt(t_minishell *mini, char *key, char *val, int tp);
 /*if the key don't already exists in the envirement add it to the 
 envirenment list*/
 void	add_new_env_prt(t_minishell *mini, char *key, char *val, int tp);
+/*print the authers of the project*/
+void    who_are_we(void);
 
 #endif
