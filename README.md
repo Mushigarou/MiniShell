@@ -23,38 +23,40 @@
 
 ## Introduction
 
-The objective of this project is to implement a simple shell in **`C`**. This shell will handle various signals, special characters, and environment variables.
+This project aims to implement a shell in **`C Language`** that mimics the Bash shell.
+
+Some features :
+- Parses command pipeline
+- Executes a command pipeline
+- Handles special characters
+- Handles environment variables
+- Handles single and double quotes `''` `""`
+- Handles signals
+- Redirection `>` `<` `>>`
+- Heredocument `<<`
+- handles pipes `|`
+- Builtin commands `echo`, `cd`, `pwd`...
 
 ## Instalation and Usage
 
-### Instalation
-
-To install this project clone this project by running
+###  Run With Docker
 
 ```bash
-    git clone 'git@github.com:jaguar-ks/MINI_SHELL.git'
+$> make docker
 ```
 
-cd to the project directory
+### Manuel Installation
+
 
 ```bash
-    cd MINI_SHELL
-```
-
-make sure u have the ***`readline`*** library installed if you are on ***`macOS`*** you can run the following command to install it
-
-```bash
-    brew install readline
-```
-
-that assuming you already have brew if not you can know how to set it up [here](https://github.com/kube/42homebrew)
-
-### Usage
-
-After installing all depandencies you can run the following command on the root of the project:
-
-```bash
-    make && ./minishell
+$> git clone 'git@github.com:jaguar-ks/MINI_SHELL.git'
+$> cd MINI_SHELL
+# ***`MacOS`*** : make sure you have the ***`readline`*** library installed (https://github.com/kube/42homebrew)
+$> brew install readline
+# ***`Debian`*** : make sure you have the ***`libreadline-dev && pkg-config`*** packages installed
+$> apt update && apt install -y pkg-config
+# Now you can compile and run the binary
+$> make && ./minishell
 ```
 
 ![programPic](./programPic.png)
