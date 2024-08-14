@@ -67,7 +67,7 @@ typedef struct s_minishell
 	char	*line;
 	char	*prompt;
 	t_exec	*exc;
-	int		open_fds[OPEN_MAX];
+	int		open_fds[1024];
 	int		fd_cnt;
 	t_list	*cmd;
 	t_list	*env;

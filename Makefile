@@ -14,7 +14,15 @@ NAME := minishell
 
 CFLAGS := -Wall -Wextra -Werror
 
+# Debian
+ifneq ($(shell command -v pkg-config 2>/dev/null),)
+READLINE = $(shell pkg-config --cflags --libs readline)
+else ifneq ($(shell command -v brew 2>/dev/null),)
+# MAC_OS
 READLINE = $(shell brew --prefix readline)
+# else
+# $(error "Neither pkg-config nor brew is available. Please install pkg-config or brew, and ensure the readline library is installed.")
+endif
 
 READLINE_LIB :=  $(patsubst %, -lreadline -L%/lib, $(READLINE))
 
@@ -95,6 +103,20 @@ $(OBJDIR)/%.o : %.c $(HEADERS)
 $(LIBTOOL) :
 	@printf "\r\033[0;33m⏳ libtool is compiling ...\033[0m"
 	@make -C libtool
+
+docker :
+	@docker build -t minishell .
+	@docker run -it minishell 
+
+ls :
+	@docker image ls
+	@echo -e "\n"
+	@docker ps -a
+
+rmimg :
+	@docker image rm ${shell docker image ls | awk 'NR > 1 {print $$3}'} -f
+rmcont :	
+	@docker rm ${shell docker ps -aq}
 
 clean : 
 	@printf "\r\033[0;33mclearing object files 🚮🗑️ ...\033[0m"

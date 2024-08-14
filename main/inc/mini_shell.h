@@ -18,7 +18,7 @@
 # include"../../execution/inc/execution.h"
 # include"../../libtool/inc/libft.h"
 
-int		g_ext_st;
+extern int		g_ext_st;
 
 void	mini_shell(t_minishell *mini);
 void	out(t_minishell *mini);
