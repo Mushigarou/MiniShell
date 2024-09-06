@@ -119,10 +119,10 @@ void	execute_all_commands(t_minishell *mini, t_exec *tmp, int *pid)
 			exit(error("fork", 1));
 		tmp = tmp->next;
 	}
-	if (*pid != -1)
-	{		
-		waitpid(*pid, mini->ext_st, 0);
-		if (WIFEXITED(*mini->ext_st))
-			*mini->ext_st = WEXITSTATUS(*mini->ext_st);
-	}
+	// if (*pid != -1)
+	// {		
+	// 	waitpid(*pid, mini->ext_st, 0);
+	// 	if (WIFEXITED(*mini->ext_st))
+	// 		*mini->ext_st = WEXITSTATUS(*mini->ext_st);
+	// }
 }

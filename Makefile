@@ -20,8 +20,8 @@ READLINE = $(shell pkg-config --cflags --libs readline)
 else ifneq ($(shell command -v brew 2>/dev/null),)
 # MAC_OS
 READLINE = $(shell brew --prefix readline)
-else
-$(error "Neither pkg-config nor brew is available. Please install pkg-config or brew, and ensure the readline library is installed.")
+# else
+# $(error "Neither pkg-config nor brew is available. Please install pkg-config or brew, and ensure the readline library is installed.")
 endif
 
 READLINE_LIB :=  $(patsubst %, -lreadline -L%/lib, $(READLINE))
